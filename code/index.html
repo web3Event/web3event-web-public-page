@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分享索引</title>
+</head>
+<body>
+  <a href="info.html?a=1&b=2&c=3#HelloWorld">信息页 info.html</a>
+  <h1>浏览器隐藏 Referrer 跳转</h1>
+  <ul>
+    <li>1、<a href="info.html?a=1&b=2&c=3#HelloWorld" rel="noreferrer noopener" id="noreferrer">&lt;a rel="noreferrer noopener"&#47;&gt;</a></li>
+    <li>2、<a href="no-referrer.html">&lt;meta name="referrer" content="no-referrer"&#47;&gt;</a></li>
+  </ul>
+  <h1>服务器跳转</h1>
+  <ul>
+    <li><a href="https://tr.redirectin.top/446eb58b-5890-4d55-98af-21962ce4f410">302 跳转，referrer 为 LP 域名</a></li>
+    <li><a href="https://tr.redirectin.top/ca1a26a6-cb44-4402-a73b-276bda218c5e">meta 跳转，referrer 为追踪域名</a></li>
+    <li><a href="https://tr.redirectin.top/d773f22a-14a7-4fda-a8f8-5a0739765863">meta 下载，网页会变白</a></li>
+    <li><a href="https://tr.redirectin.top/8adc33ef-a580-4c12-a7a4-69c8609438f0">双 meta 跳转，referrer 为预设域名 http://bedgerioractists.com/</a></li>
+  </ul>
+
+  <h1>Cookie</h1>
+  <ul>
+    <!-- <li><a href="https://bedgerioractists.com/07898b2e-8fd2-41be-b5a1-33374b6430d7">三方 Cookie</a></li> -->
+    <li><a href="https://bedgerioractists.com/07898b2e-8fd2-41be-b5a1-33374b6430d7">lptoken</a></li>
+  </ul>
+</body>
+</html>
