@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="no-referrer"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息页</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    .border-line {
+      border: 0;
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-color: #666666;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr class="border-line">
+      <td style="width: 150px;">referrer(来源页): </td>
+      <td><script>document.write(document.referrer)</script></td>
+    </tr>
+    <tr class="border-line">
+      <td>userAgent: </td>
+      <td><script>document.write(navigator.userAgent)</script></td>
+    </tr>
+    <tr class="border-line">
+      <td>language: </td>
+      <td><script>document.write(navigator.language)</script></td>
+    </tr>
+    <tr class="border-line">
+      <td>URL 路径: </td>
+      <td><script>document.write(location.pathname)</script></td>
+    </tr>
+    <tr class="border-line">
+      <td>URL 传参: </td>
+      <td id="urlparam"></td>
+    </tr>
+  </table>
+  
+  <a href="https://bedgerioractists.com/click">https://bedgerioractists.com/click</a>
+</body>
+<script>
+  var u = new URL(location.href);
+  var it = u.searchParams.keys();
+  var array = [];
+  while (true) {
+    let result = it.next();
+    if(result.done) {
+      break ;
+    }
+    let v = u.searchParams.get(result.value);
+    array.push(`<tr><td>${result.value}</td><td>=</td><td>${v}</td></tr>`);
+  }
+  document.getElementById("urlparam").innerHTML = "<table>" + array.join("\n") + "</table>";
+</script>
+</html>

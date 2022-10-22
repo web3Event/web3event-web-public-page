@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="no-referrer"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    .border-line {
+      border: 0;
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-color: #666666;
+    }
+  </style>
+</head>
+<body>
+  跳转到 Offer：<a href="https://bedgerioractists.com/click">https://bedgerioractists.com/click</a>
+  <div id="urlparam"></div>
+</body>
+<script>
+  var u = new URL(location.href);
+  var it = u.searchParams.keys();
+  var array = [];
+  while (true) {
+    let result = it.next();
+    if(result.done) {
+      break ;
+    }
+    let v = u.searchParams.get(result.value);
+    array.push(`<tr><td>${result.value}</td><td>=</td><td>${v}</td></tr>`);
+  }
+  document.getElementById("urlparam").innerHTML = "<table>" + array.join("\n") + "</table>";
+</script>
+</html>
