@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="no-referrer"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息页</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    .border-line {
+      border: 0;
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-color: #666666;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr class="border-line">
+      <td style="width: 150px;">http</td>
+      <td><a href="">http://t.tt</a></td>
+    </tr>
+    <tr class="border-line">
+      <td>mailto: </td>
+      <td><a href="mailto:gaollg@gov.cn">mailto:gaollg@gov.cn</a></td>
+    </tr>
+    <tr class="border-line">
+      <td>打电话: </td>
+      <td><a href="tel:10000">tel:10000</a></td>
+    </tr>
+    <tr class="border-line">
+      <td>安卓发短信: </td>
+      <td><a href="tel:10000"><a href="sms:10000?body=TD">sms:10000?body=TD</a></a></td>
+    </tr>
+    <tr class="border-line">
+      <td>苹果发短信: </td>
+      <td><a href="tel:10000"><a href="sms:10000&body=TD">sms:10000&body=TD</a></a></td>
+    </tr>
+  </table>
+
+  <h1>呼起软件</h1>
+  <table>
+    <tr class="border-line">
+      <td style="width: 150px;">whatsapp</td>
+      <td id="whatsapp"></td>
+    </tr>
+    <tr class="border-line">
+      <td style="width: 150px;">zalo</td>
+      <td id="zalo"></td>
+    </tr>
+    <tr class="border-line">
+      <td style="width: 150px;">呼起微信小程序</td>
+      <td><a href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/url-link/urllink.generate.html" target="_blank">API 文档</a></td>
+    </tr>
+  </table>
+</body>
+<script>
+  var getShareUrl = (type, url) => {
+    url = encodeURIComponent(url);
+    var retUrl = `whatsapp://send?text= ${url}`;
+    var u = navigator.userAgent;
+    if(type == 'zalo') {
+      if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//Android
+        var array = [];
+        array.push("intent://zaloapp.com/#Intent;action=android.intent.action.SEND;type=text/plain;S.android.intent.extra.SUBJECT=;");
+        array.push(`S.android.intent.extra.TEXT=${url};`);
+        array.push("B.hidePostFeed=false;B.backToSource=true;end");
+        return array.join("");
+      } else {
+        return `zaloshareext://shareext?url=${url}&type=8&version=1`;
+      }
+    }
+    return retUrl;
+  }
+  var getHtml = (type, msg) => {
+    var link = getShareUrl(type, msg);
+    return `<a href="${link}">${link}</a>`;
+  }
+  document.getElementById("whatsapp").innerHTML = getHtml('whatsapp', "Hello");
+  document.getElementById("zalo").innerHTML = getHtml('zalo', "Hello");
+
+</script>
+</html>
