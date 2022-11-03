@@ -1,0 +1,1 @@
+import{A as r,T as t,C as n,U as a,B as s}from"./index.21342fa2.js";const l={__name:"Main",setup(u){const e=r();return(c,_)=>{const o=t("router-view");return n(),a(o,{key:s(e).currentRoute.value.fullPath})}}};export{l as default};
